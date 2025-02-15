@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemilat's Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="showPickupLine()">
+    <div class="container">
+        <h1>Welcome to Jemilat's Website</h1>
+        <p>Discover amazing content and connect with me.</p>
+        <p id="pickup-line" class="pickup-line"></p>
+        <button class="next-line-btn" onclick="showPickupLine()">Next Pickup Line</button>
+        <input type="text" id="user-response" placeholder="Type your response here..." class="response-input">
+        <button class="response-btn" onclick="getResponse()">Send</button>
+        <p id="bot-response" class="bot-response"></p>
+    </div>
+
+    <script>
+        const pickupLines = [
+            "Are you a magician? Because whenever I look at you, everyone else disappears.",
+            "Do you have a name, or can I call you mine?",
+            "Are you French? Because Eiffel for you.",
+            "Is your name Google? Because you have everything I’ve been searching for.",
+            "Do you believe in love at first sight, or should I walk by again?",
+            "Are you a time traveler? Because I see you in my future.",
+            "Do you like Star Wars? Because Yoda one for me!",
+            "Are you Wi-Fi? Because I'm really feeling a connection.",
+            "Do you believe in fate? Because we just met, and I think it's meant to be!"
+        ];
+
+        function showPickupLine() {
+            const randomIndex = Math.floor(Math.random() * pickupLines.length);
+            document.getElementById("pickup-line").innerText = pickupLines[randomIndex];
+        }
+
+        function getResponse() {
+            const userText = document.getElementById("user-response").value;
+            let botReply = "That's an interesting response! Tell me more!";
+
+            if (userText.toLowerCase().includes("yes")) {
+                botReply = "I knew you'd love it! 💖";
+            } else if (userText.toLowerCase().includes("no")) {
+                botReply = "Oh no! Let me try another one!";
+                showPickupLine();
+            } else if (userText.trim() === "") {
+                botReply = "Don't be shy! Say something! 😃";
+            }
+
+            document.getElementById("bot-response").innerText = botReply;
+        }
+    </script>
+</body>
+</html>
